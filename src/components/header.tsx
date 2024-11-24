@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { homePath, ticketsPath } from "@/paths";
 import { buttonVariants } from "@/components/ui/button";
-import { LucideCloudLightning, LucideHandCoins, LucideCog, LucideBrainCog } from "lucide-react";
+import { LucideCloudLightning, LucideCog, LucideBrainCog } from "lucide-react";
 
 const Header = () => {
   return (

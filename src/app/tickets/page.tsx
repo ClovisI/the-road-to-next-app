@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { initialTickets } from "@/data";
 import { ticketPath } from "@/paths";
-import { Card, CardHeader, CardFooter, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardFooter, CardTitle, CardContent } from "@/components/ui/card";
 import { LucideClockAlert, LucideMonitorCog, LucideCircleCheckBig } from "lucide-react";
 import { Heading } from "@/components/heading";
 
