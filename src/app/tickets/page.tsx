@@ -4,7 +4,7 @@ import { TicketList } from "../features/ticket/components/ticket-list";
 import { Spinner } from "@/components/spinner";
 import { ErrorBoundary } from "react-error-boundary";
 import { Placeholder } from "@/components/Placeholder";
-import { TicketCreateForm } from "@/components/ticket-create-form";
+import { TicketUpsertForm } from "@/app/features/ticket/components/ticket-upsert-form";
 import { CardCompact } from "@/components/card-compact";
 
 
@@ -18,7 +18,7 @@ const TicketsPage = async () => {
       title = "Create Ticket"
       description = "A new ticket will be created"
       className = "w-full max-w-[420px] self-center"
-      content = {<TicketCreateForm />}
+      content = {<TicketUpsertForm />}
      />
 
     <Suspense fallback={<Spinner />}>
