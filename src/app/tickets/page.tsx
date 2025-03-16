@@ -10,22 +10,22 @@ import { CardCompact } from "@/components/card-compact";
 
 const TicketsPage = async () => {
   return (
-    <div className="flex-1 flex flex-col gap-y-8">
-      <Heading title="Tickets" description="All your tickets in one place"/>
-    <ErrorBoundary fallback={<Placeholder label="Something went wrong"/>}>
+      <div className="flex-1 flex flex-col gap-y-8">
+        <Heading title="Tickets" description="All your tickets in one place"/>
+      <ErrorBoundary fallback={<Placeholder label="Something went wrong"/>}>
 
-    <CardCompact
-      title = "Create Ticket"
-      description = "A new ticket will be created"
-      className = "w-full max-w-[420px] self-center"
-      content = {<TicketUpsertForm />}
-     />
+      <CardCompact
+        title = "Create Ticket"
+        description = "A new ticket will be created"
+        className = "w-full max-w-[420px] self-center"
+        content = {<TicketUpsertForm />}
+       />
 
-    <Suspense fallback={<Spinner />}>
-      <TicketList/>
-    </Suspense>
-    </ErrorBoundary>
-    </div>
+      <Suspense fallback={<Spinner />}>
+        <TicketList/>
+      </Suspense>
+      </ErrorBoundary>
+      </div>
   );
 };
 export default TicketsPage;

@@ -1,26 +1,46 @@
+"use client";
+
 import { Ticket } from "@prisma/client";
-import { Button } from "@/components/ui/button";
+import { useActionState } from "react";
+import { SubmitButton } from "@/app/features/ticket/components/form/submit-button";
+import { FieldError } from "@/app/features/ticket/components/form/field-error";
+import { Form } from "@/app/features/ticket/components/form/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { upsertTicket } from "../actions/upsert-ticket";
+import { EMPTY_ACTION_STATE } from "@/app/features/ticket/components/form/utils/to-action-state";
 
 type TicketUpsertFormProps = {
   ticket?: Ticket;
 };
 
 const TicketUpsertForm = ({ ticket }: TicketUpsertFormProps) => {
-  return (
-    <form action={ upsertTicket.bind(null, ticket?.id) } className="flex flex-col gap-y-2">
+  const [actionState, action] = useActionState(
+    upsertTicket.bind(null, ticket?.id),
+    EMPTY_ACTION_STATE
+);
 
+  return (
+    <Form action={action} actionState={actionState}>
       <Label htmlFor="title">Title</Label>
-      <Input id="title" name="title" type="text" defaultValue={ticket?.title} />
+      <Input id="title" name="title" type="text"
+        defaultValue={
+          (actionState.payload?.get("title") as string) ??  ticket?.title
+          }
+      />
+      <FieldError actionState={actionState} name="title" />
 
       <Label htmlFor="content">Content</Label>
-      <Textarea id="content" name="content" defaultValue={ticket?.content} />
+      <Textarea id="content" name="content"
+        defaultValue={
+          (actionState.payload?.get("content") as string) ??  ticket?.content
+          }
+      />
+      <FieldError actionState={actionState} name="content" />
 
-      <Button type="submit">{ticket ? "Edit" : "Create" }</Button>
-    </form>
+      <SubmitButton label={ticket ? "Edit" : "Create"} />
+    </Form>
   );
 };
 
